@@ -46,17 +46,13 @@ button,
 textarea,
 select {
   font: inherit;
-}
-
-svg {
-  width: 16px;
-  height: 16px;
-  fill: var(--text-color);
+  cursor: pointer;
 }
 .customCheckboxLabel {
   display: inline-flex;
   align-items: center;
   user-select: none;
+  cursor: pointer;
   &::before {
     margin-right: clamp(6px, 5vw, 12px);
     width: clamp(12px, 10vw, 24px);

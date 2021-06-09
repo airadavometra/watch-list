@@ -7,3 +7,26 @@
 .header {
   font-family: var(--header-font);
 }
+.filmContainer {
+  display: inline-flex;
+  align-items: center;
+}
+.deleteButton {
+  width: clamp(12px, 10vw, 28px);
+  height: clamp(12px, 10vw, 28px);
+  margin-left: clamp(6px, 5vw, 12px);
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: clamp(2px, 2vw, 8px);
+  border: none;
+  background-color: #4f6aff;
+  &:hover,
+  :focus {
+    box-shadow: 0 0 5px 0.2rem #4f6aff44;
+  }
+}
+.binImg {
+  width: clamp(12px, 10vw, 24px);
+  height: clamp(12px, 10vw, 24px);
+}

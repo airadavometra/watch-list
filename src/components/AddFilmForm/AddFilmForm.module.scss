@@ -51,7 +51,7 @@
 }
 .addButton {
   grid-area: add;
-  background-color: #1ebe61;
+  background-image: linear-gradient(135deg, #1ebe61, #f3f174);
   &:hover,
   :focus {
     box-shadow: 0 0 5px 0.2rem #1ebe6144;
@@ -59,7 +59,7 @@
 }
 .clearButton {
   grid-area: clear;
-  background-color: #369eff;
+  background-image: linear-gradient(-45deg, #369eff, #8c3bff99);
   &:hover,
   :focus {
     box-shadow: 0 0 5px 0.2rem #369eff44;

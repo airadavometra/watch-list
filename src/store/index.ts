@@ -1,8 +1,8 @@
 import { configureStore } from '@reduxjs/toolkit';
-import { exampleReducer } from '@store/slices/example';
+import { filmsReducer } from '@store/slices/films';
 
 const reducer = {
-  example: exampleReducer,
+  films: filmsReducer,
 };
 
 export const store = configureStore({
