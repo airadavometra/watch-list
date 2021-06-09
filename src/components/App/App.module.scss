@@ -1,5 +1,12 @@
 .main {
+  width: 60vw;
   margin: 0 auto;
-  max-width: 900px;
-  width: fit-content;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 5vw, 36px);
+}
+@media (max-width: 750px) {
+  .main {
+    width: 80vw;
+  }
 }

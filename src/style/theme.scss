@@ -1,9 +1,7 @@
-.light-theme {
-  --text-color: #333;
-  --back-color: #fcfcfc;
-}
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700&family=Permanent+Marker&display=swap');
 
-.dark-theme {
-  --text-color: #fcfcfc;
-  --back-color: #333;
+html {
+  --text-color: #333;
+  --simple-text-font: 'Montserrat', sans-serif;
+  --header-font: 'Permanent Marker', cursive;
 }

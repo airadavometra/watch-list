@@ -1,0 +1,9 @@
+.main {
+  padding-left: clamp(12px, 3vw, 24px);
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 3vw, 24px);
+}
+.header {
+  font-family: var(--header-font);
+}

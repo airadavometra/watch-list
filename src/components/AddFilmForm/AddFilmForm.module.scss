@@ -1,0 +1,71 @@
+.header {
+  grid-area: header;
+  font-size: clamp(12px, 5vw, 24px);
+}
+.form {
+  max-width: 60vw;
+  padding: clamp(12px, 3vw, 24px);
+  display: grid;
+  grid-template-columns: repeat(4, minmax(15%, 15vw));
+  grid-template-areas:
+    'header header header header'
+    'name name released released'
+    'day month quarter year'
+    'add add clear clear';
+  gap: clamp(12px, 3vw, 24px);
+  background-color: #e4e4e488;
+  border-radius: clamp(12px, 3vw, 36px);
+}
+.input,
+.button {
+  padding: clamp(6px, 2vw, 12px);
+}
+.input,
+.input:focus,
+.input:hover,
+.button,
+.button:focus,
+.button:hover {
+  border-radius: clamp(6px, 2vw, 12px);
+}
+.released {
+  max-width: fit-content;
+  grid-area: released;
+}
+.nameInput {
+  grid-area: name;
+}
+.dayInput {
+  grid-area: day;
+}
+.monthInput {
+  grid-area: month;
+}
+.quarterInput {
+  grid-area: quarter;
+}
+.yearInput {
+  grid-area: year;
+}
+.addButton {
+  grid-area: add;
+}
+.clearButton {
+  grid-area: clear;
+}
+@media (max-width: 750px) {
+  .form {
+    max-width: 80vw;
+    grid-template-columns: repeat(1, minmax(100%, 70vw));
+    grid-template-areas:
+      'header'
+      'name'
+      'released'
+      'day'
+      'month'
+      'quarter'
+      'year'
+      'add'
+      'clear';
+  }
+}
