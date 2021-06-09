@@ -13,20 +13,19 @@
     'day month quarter year'
     'add add clear clear';
   gap: clamp(12px, 3vw, 24px);
+  align-items: center;
   background-color: #e4e4e488;
   border-radius: clamp(12px, 3vw, 36px);
 }
 .input,
 .button {
   padding: clamp(6px, 2vw, 12px);
-}
-.input,
-.input:focus,
-.input:hover,
-.button,
-.button:focus,
-.button:hover {
   border-radius: clamp(6px, 2vw, 12px);
+  border: none;
+}
+.input {
+  background-color: #e4e4e4;
+  border: 2px solid #ff46a2;
 }
 .released {
   max-width: fit-content;
@@ -47,11 +46,24 @@
 .yearInput {
   grid-area: year;
 }
+.button {
+  font-weight: 700;
+}
 .addButton {
   grid-area: add;
+  background-color: #1ebe61;
+  &:hover,
+  :focus {
+    box-shadow: 0 0 5px 0.2rem #1ebe6144;
+  }
 }
 .clearButton {
   grid-area: clear;
+  background-color: #369eff;
+  &:hover,
+  :focus {
+    box-shadow: 0 0 5px 0.2rem #369eff44;
+  }
 }
 @media (max-width: 750px) {
   .form {

@@ -9,9 +9,9 @@ export const App: FunctionComponent = () => {
     <div className={classes.main}>
       <Header text="Watch list" />
       <AddFilmForm />
-      <FilmList listTitle="Already released:" listItems={['film1']} />
-      <FilmList listTitle="Coming soon:" listItems={['film2']} />
-      <FilmList listTitle="Need to wait:" listItems={['film3']} />
+      <FilmList listTitle="Already released:" listItems={['film1']} hasCheckboxes={true} />
+      <FilmList listTitle="Coming soon:" listItems={['film2']} hasCheckboxes={false} />
+      <FilmList listTitle="Need to wait:" listItems={['film3']} hasCheckboxes={false} />
     </div>
   );
 };

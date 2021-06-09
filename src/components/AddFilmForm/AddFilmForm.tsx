@@ -9,9 +9,9 @@ export const AddFilmForm: FunctionComponent<AddFilmFormProps> = ({}) => {
     <form className={classes.form}>
       <h2 className={classes.header}>Add film or series</h2>
       <input className={classNames(classes.input, classes.nameInput)} type="text" placeholder="Name" />
-      <label className={classes.released}>
+      <label className={classNames(classes.released, 'customCheckbox')}>
         <input type="checkbox" />
-        <span>Already released</span>
+        <span className={classNames('customCheckboxLabel')}>Already released</span>
       </label>
       <input className={classNames(classes.input, classes.dayInput)} type="number" min="1" max="31" placeholder="Day" />
       <input
