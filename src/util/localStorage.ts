@@ -6,7 +6,6 @@ export const loadState = (): Film[] => {
     if (serializedState === null) {
       return [];
     }
-    console.log(JSON.parse(serializedState) as Film[]);
     return JSON.parse(serializedState);
   } catch (err) {
     return [];

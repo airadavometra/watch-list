@@ -4,14 +4,15 @@
 }
 .form {
   max-width: 60vw;
-  padding: clamp(12px, 3vw, 24px);
+  padding: clamp(12px, 3vw, 24px) clamp(12px, 3vw, 24px) 0 clamp(12px, 3vw, 24px);
   display: grid;
   grid-template-columns: repeat(4, minmax(15%, 15vw));
   grid-template-areas:
     'header header header header'
     'name name released released'
     'day month quarter year'
-    'add add clear clear';
+    'add add clear clear'
+    'err err err err';
   gap: clamp(12px, 3vw, 24px);
   align-items: center;
   background-color: #e4e4e488;
@@ -65,6 +66,20 @@
     box-shadow: 0 0 5px 0.2rem #369eff44;
   }
 }
+.errorMessage {
+  padding-bottom: clamp(12px, 3vw, 24px);
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  grid-area: err;
+  color: #ff3636;
+}
+.errorImg {
+  margin-right: clamp(6px, 5vw, 12px);
+  width: clamp(12px, 10vw, 24px);
+  height: clamp(12px, 10vw, 24px);
+  fill: #ff3636;
+}
 @media (max-width: 750px) {
   .form {
     max-width: 80vw;
@@ -78,6 +93,7 @@
       'quarter'
       'year'
       'add'
-      'clear';
+      'clear'
+      'err';
   }
 }

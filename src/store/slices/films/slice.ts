@@ -18,10 +18,10 @@ const slice = createSlice({
       state.films.push(film);
       saveState(state.films);
     },
-    watchFilm: (state, { payload: addDate }) => {
+    toggleWatchFilm: (state, { payload: addDate }) => {
       const film = state.films.find((item) => item.addDate === addDate);
       if (film) {
-        film.watched = true;
+        film.watched = !film.watched;
         saveState(state.films);
       }
     },

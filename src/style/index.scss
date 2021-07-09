@@ -76,6 +76,10 @@ input:hover,
 input:focus {
   box-shadow: 0 0 5px 0.2rem #ff46a244;
 }
+input[type='checkbox']:disabled + .customCheckboxLabel::before,
+input:disabled {
+  opacity: 0.7;
+}
 
 input[type='checkbox'] {
   position: absolute;

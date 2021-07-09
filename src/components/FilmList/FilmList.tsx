@@ -9,8 +9,8 @@ export interface FilmListProps {
   listTitle: string;
   listItems: Film[];
   hasCheckboxes: boolean;
-  onRemove(addDate: Date): void;
-  onWatch(addDate: Date): void;
+  onRemove(addDate: number): void;
+  onToggleWatch?(addDate: number): void;
 }
 
 export const FilmList: FunctionComponent<FilmListProps> = ({
@@ -18,24 +18,28 @@ export const FilmList: FunctionComponent<FilmListProps> = ({
   listItems,
   hasCheckboxes,
   onRemove,
-  onWatch,
+  onToggleWatch,
 }) => {
   return (
     <div className={classes.main}>
       <h2 className={classes.header}>{listTitle}</h2>
-      <ul>
+      <ul className={classes.filmList}>
         {listItems.map((item, index) => (
           <li className={classes.filmContainer} key={index}>
-            {hasCheckboxes ? (
-              <label className={classNames('customCheckbox')}>
-                <input type="checkbox" onClick={() => onWatch(item.addDate)} />
-                <span className={classNames('customCheckboxLabel')}>
-                  <FilmItem filmInfo={item} />
-                </span>
-              </label>
-            ) : (
-              <FilmItem filmInfo={item} />
-            )}
+            <label className={classNames('customCheckbox')}>
+              <input
+                type="checkbox"
+                checked={item.watched}
+                disabled={!hasCheckboxes}
+                onChange={() => {
+                  console.log(onToggleWatch);
+                  onToggleWatch && onToggleWatch(item.addDate);
+                }}
+              />
+              <span className={classNames('customCheckboxLabel')}>
+                <FilmItem filmInfo={item} />
+              </span>
+            </label>
             <button className={classes.deleteButton} onClick={() => onRemove(item.addDate)}>
               <BinImg className={classes.binImg} />
             </button>

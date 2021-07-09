@@ -30,3 +30,8 @@
   width: clamp(12px, 10vw, 24px);
   height: clamp(12px, 10vw, 24px);
 }
+.filmList {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: clamp(12px, 3vw, 24px);
+}
