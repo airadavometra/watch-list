@@ -1,5 +1,6 @@
 import { Film } from '@app-types/film';
 import React, { FC } from 'react';
+import { convertReleaseDateToString } from 'util/convertReleaseDateToString';
 import classes from './FilmItem.module.scss';
 
 export interface FilmItemProps {
@@ -7,5 +8,9 @@ export interface FilmItemProps {
 }
 
 export const FilmItem: FC<FilmItemProps> = ({ filmInfo }) => {
-  return <div className={classes.main}>{filmInfo.filmName}</div>;
+  return (
+    <div className={classes.main}>
+      {filmInfo.filmName} - {convertReleaseDateToString(filmInfo.releaseDate)}
+    </div>
+  );
 };

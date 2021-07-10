@@ -1,8 +1,4 @@
-import { Film, Quarter } from '@app-types/film';
-
-export const getQuarter = (month: number): Quarter => {
-  return month < 3 ? Quarter.Q1 : month < 6 ? Quarter.Q2 : month < 9 ? Quarter.Q3 : Quarter.Q4;
-};
+import { Film } from '@app-types/film';
 
 export const filterFilms = (films: Film[]) => {
   const currentDate = new Date();
@@ -11,71 +7,46 @@ export const filterFilms = (films: Film[]) => {
 
   const unknown = films.filter((item) => !item.released && !item.watched && !item.releaseDate.year);
   const watched = films.filter((item) => item.watched);
-  const released = films.filter(
-    (item) =>
-      !item.watched &&
-      (item.released ||
-        (item.releaseDate.year &&
-          (item.releaseDate.year < currentDate.getFullYear() ||
-            (item.releaseDate.year === currentDate.getFullYear() &&
-              item.releaseDate.month &&
-              item.releaseDate.month < currentDate.getMonth() + 1) ||
-            (item.releaseDate.year === currentDate.getFullYear() &&
-              item.releaseDate.month === currentDate.getMonth() + 1 &&
-              item.releaseDate.day &&
-              item.releaseDate.day < currentDate.getDate()) ||
-            (item.releaseDate.year === currentDate.getFullYear() &&
-              item.releaseDate.quarter &&
-              item.releaseDate.quarter <= getQuarter(currentDate.getMonth())))))
-  );
-  const comingSoon = films.filter(
-    (item) =>
-      !item.watched &&
-      !item.released &&
-      !(
-        item.releaseDate.year &&
-        (item.releaseDate.year < currentDate.getFullYear() ||
-          (item.releaseDate.year === currentDate.getFullYear() &&
-            item.releaseDate.month &&
-            item.releaseDate.month < currentDate.getMonth() + 1) ||
-          (item.releaseDate.year === currentDate.getFullYear() &&
-            item.releaseDate.month === currentDate.getMonth() + 1 &&
-            item.releaseDate.day &&
-            item.releaseDate.day < currentDate.getDate()) ||
-          (item.releaseDate.year === currentDate.getFullYear() &&
-            item.releaseDate.quarter &&
-            item.releaseDate.quarter <= getQuarter(currentDate.getMonth())))
-      ) &&
-      item.releaseDate.year &&
-      (item.releaseDate.year < comingSoonDate.getFullYear() ||
-        (item.releaseDate.year === comingSoonDate.getFullYear() &&
-          item.releaseDate.month &&
-          item.releaseDate.month < comingSoonDate.getMonth() + 1) ||
-        (item.releaseDate.year === comingSoonDate.getFullYear() &&
-          item.releaseDate.month === comingSoonDate.getMonth() + 1 &&
-          item.releaseDate.day &&
-          item.releaseDate.day < comingSoonDate.getDate()) ||
-        (item.releaseDate.year === comingSoonDate.getFullYear() &&
-          item.releaseDate.quarter &&
-          item.releaseDate.quarter <= getQuarter(comingSoonDate.getMonth())))
-  );
-  const needToWait = films.filter(
-    (item) =>
-      !item.watched &&
-      !item.released &&
-      item.releaseDate.year &&
-      (item.releaseDate.year > comingSoonDate.getFullYear() ||
-        (item.releaseDate.year === comingSoonDate.getFullYear() &&
-          item.releaseDate.month &&
-          item.releaseDate.month > comingSoonDate.getMonth() + 1) ||
-        (item.releaseDate.year === comingSoonDate.getFullYear() &&
-          item.releaseDate.month === comingSoonDate.getMonth() + 1 &&
-          item.releaseDate.day &&
-          item.releaseDate.day > comingSoonDate.getDate()) ||
-        (item.releaseDate.year === comingSoonDate.getFullYear() &&
-          item.releaseDate.quarter &&
-          item.releaseDate.quarter > getQuarter(comingSoonDate.getMonth())))
-  );
+  const needToWait: Film[] = [];
+  const released: Film[] = [];
+  const comingSoon: Film[] = [];
+  for (const film of films) {
+    if (!film.released && !film.watched && film.releaseDate.year) {
+      if (film.releaseDate.year <= currentDate.getFullYear()) {
+        if (
+          film.releaseDate.year < currentDate.getFullYear() ||
+          (film.releaseDate.year === currentDate.getFullYear() &&
+            film.releaseDate.month &&
+            film.releaseDate.month < currentDate.getMonth() + 1) ||
+          (film.releaseDate.year === currentDate.getFullYear() &&
+            film.releaseDate.month &&
+            film.releaseDate.month === currentDate.getMonth() + 1 &&
+            film.releaseDate.day &&
+            film.releaseDate.day < currentDate.getDate())
+        ) {
+          released.push(film);
+        } else {
+          if (
+            film.releaseDate.year < comingSoonDate.getFullYear() ||
+            (film.releaseDate.year === comingSoonDate.getFullYear() &&
+              film.releaseDate.month &&
+              film.releaseDate.month < comingSoonDate.getMonth() + 1) ||
+            (film.releaseDate.year === comingSoonDate.getFullYear() &&
+              film.releaseDate.month &&
+              film.releaseDate.month === comingSoonDate.getMonth() + 1 &&
+              film.releaseDate.day &&
+              film.releaseDate.day < comingSoonDate.getDate())
+          ) {
+            comingSoon.push(film);
+          } else {
+            needToWait.push(film);
+          }
+        }
+      } else {
+        needToWait.push(film);
+      }
+    }
+  }
   return {
     unknown,
     watched,

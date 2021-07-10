@@ -6,13 +6,13 @@
   max-width: 60vw;
   padding: clamp(12px, 3vw, 24px) clamp(12px, 3vw, 24px) 0 clamp(12px, 3vw, 24px);
   display: grid;
-  grid-template-columns: repeat(4, minmax(15%, 15vw));
+  grid-template-columns: repeat(4, minmax(10%, 10vw));
   grid-template-areas:
-    'header header header header'
-    'name name released released'
-    'day month quarter year'
-    'add add clear clear'
-    'err err err err';
+    'header header header header header header'
+    'name name name name released released'
+    'day day month month year year'
+    'add add add clear clear clear'
+    'err err err err err err';
   gap: clamp(12px, 3vw, 24px);
   align-items: center;
   background-color: #e4e4e488;
@@ -40,9 +40,6 @@
 }
 .monthInput {
   grid-area: month;
-}
-.quarterInput {
-  grid-area: quarter;
 }
 .yearInput {
   grid-area: year;
@@ -90,7 +87,6 @@
       'released'
       'day'
       'month'
-      'quarter'
       'year'
       'add'
       'clear'

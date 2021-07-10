@@ -26,20 +26,24 @@ export const FilmList: FunctionComponent<FilmListProps> = ({
       <ul className={classes.filmList}>
         {listItems.map((item, index) => (
           <li className={classes.filmContainer} key={index}>
-            <label className={classNames('customCheckbox')}>
-              <input
-                type="checkbox"
-                checked={item.watched}
-                disabled={!hasCheckboxes}
-                onChange={() => {
-                  console.log(onToggleWatch);
-                  onToggleWatch && onToggleWatch(item.addDate);
-                }}
-              />
-              <span className={classNames('customCheckboxLabel')}>
-                <FilmItem filmInfo={item} />
-              </span>
-            </label>
+            {hasCheckboxes ? (
+              <label className={classNames('customCheckbox')}>
+                <input
+                  type="checkbox"
+                  checked={item.watched}
+                  onChange={() => {
+                    console.log(onToggleWatch);
+                    onToggleWatch && onToggleWatch(item.addDate);
+                  }}
+                />
+                <span className={classNames('customCheckboxLabel')}>
+                  <FilmItem filmInfo={item} />
+                </span>
+              </label>
+            ) : (
+              <FilmItem filmInfo={item} />
+            )}
+
             <button className={classes.deleteButton} onClick={() => onRemove(item.addDate)}>
               <BinImg className={classes.binImg} />
             </button>
