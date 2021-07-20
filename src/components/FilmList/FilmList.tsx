@@ -32,7 +32,6 @@ export const FilmList: FunctionComponent<FilmListProps> = ({
                   type="checkbox"
                   checked={item.watched}
                   onChange={() => {
-                    console.log(onToggleWatch);
                     onToggleWatch && onToggleWatch(item.addDate);
                   }}
                 />
